@@ -1,1 +1,1 @@
-# google-calendar
+# react-google-calendar
