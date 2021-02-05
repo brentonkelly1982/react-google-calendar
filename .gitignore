@@ -1,18 +1,58 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
 
-# Other files and folders
-.settings/
+# Logs and databases #
+######################
+logs
+*.log
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Node #
+######################
+node_modules/
+*.tgz
+.node_repl_history
+.npm
+.lock-wscript
+npm-debug.log*
+
+# Parcel #
+######################
+.cache
+.parcel-cache
+
+# GrapesJS #
+######################
+locale/
+
+# Yarn #
+######################
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+yarn-debug.log*
+yarn-error.log*
+
+# Bower #
+######################
+bower_components
+
+# Grunt #
+######################
+.grunt
