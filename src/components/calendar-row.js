@@ -1,9 +1,9 @@
 import React from 'react';
-import CalendarDay from './calendar-day';
+import { buildCalendarDays } from '../actions/actions';
 
-const CalendarRow = () => (
+const CalendarRow = (props) => (
     <div className="google-calendar__row">
-
+        {buildCalendarDays(props.days)}
     </div>
 );
 

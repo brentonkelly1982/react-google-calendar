@@ -1,0 +1,9 @@
+@import 'calendar-row.css';
+@import 'calendar-day.css';
+
+#google-calendar {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    border: solid 1px #EEE;
+}

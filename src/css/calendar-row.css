@@ -1,0 +1,8 @@
+.google-calendar__headers,
+.google-calendar__row {
+    display: flex;
+    border-bottom: solid 1px #EEE;
+}
+.google-calendar__row:last-child {
+    border: 0px;
+}

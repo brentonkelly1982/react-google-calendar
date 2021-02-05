@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CalendarDay = () => (
-    <div className="google-calendar__day">
-
+const CalendarDay = (props) => (
+    <div className={(props.blankDayCell == "true") ? 'google-calendar__day google-calendar--empty-day' : 'google-calendar__day'}>
+        {(props.blankDayCell == "true") ? '' : props.date}
     </div>
 );
 
