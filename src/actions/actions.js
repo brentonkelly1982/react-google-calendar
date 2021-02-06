@@ -18,6 +18,7 @@ export const buildCalendarRows = ({ month, year }) => {
     let calendarRows = [];
     let calendarDays = [];
     let day = 1;
+    let keyCounter = 0;
     // LOOP FOR MAX NUMBER OF WEEK ROWS
     // LOOP WILL BREAK WHEN DAYS ARE DONE
     for (var w = 0; w < 9; w++) {
@@ -25,7 +26,7 @@ export const buildCalendarRows = ({ month, year }) => {
         for (var d = 0; d <= 6; d++) {
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={keyCounter + '' + day} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -33,8 +34,10 @@ export const buildCalendarRows = ({ month, year }) => {
             
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} key={keyCounter + '' + day} />);
             }
+
+            keyCounter++;
         }
 
         // CREATE AND PUSH THIS CALENDAR ROW
@@ -48,12 +51,4 @@ export const buildCalendarRows = ({ month, year }) => {
     }
 
     return calendarRows;
-}
-
-export const buildCalendarDays = (calendarDays) => {
-    let days = calendarDays.map(day => {
-        return day;
-    });
-
-    return days;
 }
