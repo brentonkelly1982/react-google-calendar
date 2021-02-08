@@ -1,9 +1,12 @@
-@import 'calendar-row.css';
-@import 'calendar-day.css';
+@import './calendar-toolbar.css';
+@import './calendar-row.css';
+@import './calendar-day.css';
 
-#google-calendar {
+.google-calendar__wrapper {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
+}
+.google-calendar {
     border: solid 1px #EEE;
 }

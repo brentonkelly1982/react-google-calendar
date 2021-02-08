@@ -1,0 +1,7 @@
+.google-calendar__toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+.google-calendar__navigation-controls {
+    display: flex;
+}
