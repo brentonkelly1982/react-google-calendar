@@ -1,0 +1,8 @@
+.google-calendar__aside {
+    flex: none;
+}
+.google-calendar__calendar-list {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
