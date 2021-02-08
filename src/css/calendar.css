@@ -9,6 +9,12 @@
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.google-calendar__title {
+    margin-bottom: 1.25rem;
+    text-align: center;
 }
 .google-calendar__content {
     display: flex;

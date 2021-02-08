@@ -24,7 +24,7 @@ const Calendar = () => {
 
     return (
         <div className="google-calendar__wrapper">
-            <h1>React Google Calendar</h1>
+            <h1 className="google-calendar__title">React Google Calendar</h1>
             <CalendarToolbar month={month} />
             <CalendarContent month={month} year={year} events={(events != null) ? events.items : []} />
         </div>

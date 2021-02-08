@@ -7,7 +7,6 @@
 .google-calendar__day {
     width: 14.28571%;
     padding: 10px;
-    border-right: solid 1px #EEE;
     box-sizing: border-box;
     position: relative;
 }
@@ -17,6 +16,7 @@
 }
 .google-calendar__day {
     height: 150px;
+    border-right: solid 1px #EEE;
 }
 .google-calendar__cell-date {
     position: absolute;
