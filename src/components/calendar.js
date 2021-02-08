@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CalendarToolbar from './calendar-toolbar';
-import CalendarHeaders from './calendar-headers';
-import CalendarRows from './calendar-rows';
+import CalendarContent from './calendar-content';
 import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
@@ -14,10 +13,7 @@ const Calendar = () => {
         <div className="google-calendar__wrapper">
             <h1>React Google Calendar</h1>
             <CalendarToolbar month={month} />
-            <div className="google-calendar">
-                <CalendarHeaders />
-                <CalendarRows month={month} year={year} />
-            </div>
+            <CalendarContent month={month} year={year} />
         </div>
     )
 };

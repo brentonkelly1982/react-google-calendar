@@ -1,12 +1,17 @@
 @import './calendar-toolbar.css';
 @import './calendar-row.css';
 @import './calendar-day.css';
+@import './calendar-aside.css';
 
 .google-calendar__wrapper {
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
 }
-.google-calendar {
+.google-calendar__content {
+    display: flex;
+}
+.google-calendar__table {
     border: solid 1px #EEE;
+    flex: 1 1 auto;
 }

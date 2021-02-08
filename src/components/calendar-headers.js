@@ -6,7 +6,7 @@ const CalendarHeaders = () => {
     return (
         <div className="google-calendar__headers">
             {days.map((day, index) => 
-                <div className={'google-calendar__header google-calendar--' + day} key={index}>{day}</div>
+                <div className={'google-calendar__header google-calendar--' + day.toLowerCase()} key={index}>{day}</div>
             )}
         </div>
     );
