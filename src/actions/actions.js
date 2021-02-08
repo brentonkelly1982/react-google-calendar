@@ -1,8 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 import CalendarRow from '../components/calendar-row';
 import CalendarDay from '../components/calendar-day';
 
-export const buildCalendarRows = ({ month, year }) => {
+export const buildCalendarRows = ({ month, year, events }) => {
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
@@ -26,7 +27,16 @@ export const buildCalendarRows = ({ month, year }) => {
         for (var d = 0; d <= 6; d++) {
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} />);
+                let dayEvents = [];
+                if(events.length) {
+                    events.forEach(event => {
+                        if(moment(event.start.date).isSame(new Date(year, month, day))) {
+                            dayEvents.push(event);
+                        }
+                    });
+                }
+
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} events={dayEvents} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;

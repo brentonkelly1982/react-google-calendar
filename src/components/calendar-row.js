@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CalendarRow = (props) => (
+const CalendarRow = ({ days }) => (
     <div className="google-calendar__row">
-        {props.days}
+        {days}
     </div>
 );
 
