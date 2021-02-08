@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap';
+@import './global.css';
 @import './calendar-toolbar.css';
 @import './calendar-row.css';
 @import './calendar-day.css';
