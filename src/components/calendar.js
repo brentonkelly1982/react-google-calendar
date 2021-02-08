@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { buildCalendarRows } from '../actions/actions';
 import CalendarToolbar from './calendar-toolbar';
+import CalendarHeaders from './calendar-headers';
+import CalendarRows from './calendar-rows';
 import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
@@ -14,18 +15,8 @@ const Calendar = () => {
             <h1>React Google Calendar</h1>
             <CalendarToolbar month={month} />
             <div className="google-calendar">
-                <div className="google-calendar__headers">
-                    <div className="google-calendar__header google-calendar--sunday">Sunday</div>
-                    <div className="google-calendar__header google-calendar--monday">Monday</div>
-                    <div className="google-calendar__header google-calendar--tuesday">Tuesday</div>
-                    <div className="google-calendar__header google-calendar--wednesday">Wednesday</div>
-                    <div className="google-calendar__header google-calendar--thursday">Thursday</div>
-                    <div className="google-calendar__header google-calendar--friday">Friday</div>
-                    <div className="google-calendar__header google-calendar--saturday">Saturday</div>
-                </div>
-                <div className="google-calendar__rows">
-                    {buildCalendarRows({ month: month, year: year })}
-                </div>
+                <CalendarHeaders />
+                <CalendarRows month={month} year={year} />
             </div>
         </div>
     )

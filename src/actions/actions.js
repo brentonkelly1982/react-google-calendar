@@ -26,7 +26,7 @@ export const buildCalendarRows = ({ month, year }) => {
         for (var d = 0; d <= 6; d++) {
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={keyCounter + '' + day} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -34,7 +34,7 @@ export const buildCalendarRows = ({ month, year }) => {
             
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} key={keyCounter + '' + day} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} key={d} />);
             }
 
             keyCounter++;
