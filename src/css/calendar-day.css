@@ -1,14 +1,30 @@
-.google-calendar__header,
-.google-calendar__day {
+.google-calendar__header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.google-calendar__header,
+.google-calendar__day {
     width: 14.28571%;
     padding: 10px;
     border-right: solid 1px #EEE;
     box-sizing: border-box;
+    position: relative;
 }
 .google-calendar__header:last-child,
 .google-calendar__day:last-child {
     border: 0px;
+}
+.google-calendar__day {
+    height: 150px;
+}
+.google-calendar__cell-date {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.google-calendar__events {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
 }
