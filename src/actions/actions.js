@@ -7,7 +7,7 @@ export const buildCalendarRows = ({ month, year }) => {
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
     const monthLength = daysInMonth[month];
-    
+
     // ADJUST FEBRUARY IF NEEDED
     if (month == 1) {
         if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){

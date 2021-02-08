@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { buildCalendarRows } from '../actions/actions';
+import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
     const thisMonth = (new Date()).getMonth();
