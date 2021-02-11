@@ -2,7 +2,7 @@ export const calendars = (state, action) => {
     const { type, payload } = action;
 
     switch(type) {
-        case "SET_CALENDARS": {
+        case "SET_CALENDAR": {
             return {
                 ...state,
                 calendars: state.calendars.concat(payload)
@@ -19,8 +19,6 @@ export const isLoading = (state, action) => {
 
     switch(type) {
         case "REMOVE_LOADING" : {
-            console.log(state.isLoading);
-            console.log(() => !state.isLoading);
             return {
                 ...state,
                 isLoading: false

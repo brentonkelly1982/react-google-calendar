@@ -23,25 +23,35 @@ export const buildCalendarRows = () => {
     let calendarDays = [];
     let day = 1;
     let keyCounter = 0;
+
     // LOOP FOR MAX NUMBER OF WEEK ROWS
     // LOOP WILL BREAK WHEN DAYS ARE DONE
     for (var w = 0; w < 9; w++) {
-        // LOOP FOR EACH DAY CELL
+
+        // LOOP FOR EACH DAY CELL IN THIS ROW
         for (var d = 0; d <= 6; d++) {
+
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
                 let dayEvents = [];
+
+                // LOOP THROUGH EACH CALENDAR
                 calendars.forEach(calendar => {
+
+                    // ONLY ITERATE IF EVENTS EXIST
                     if(calendar.events.length) {
                         calendar.events.forEach(event => {
                             let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
                             if(moment(startDate).isSame(new Date(year, month, day))) {
+                                
+                                // PUSH EVENT TO EVENT BANK
                                 dayEvents.push(event);
                             }
                         });
                     }
                 });
 
+                // CREATE AND PUSH CALENDAR DAY TO BANK
                 calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} events={dayEvents} />);
 
                 // INCREMENT OUR DAY COUNTER
@@ -50,6 +60,7 @@ export const buildCalendarRows = () => {
             
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
+                // CREATE AND PUSH EMPTY CALENDAR DAY TO BANK
                 calendarDays.push(<CalendarDay blankDayCell="true" date={null} key={d} />);
             }
 

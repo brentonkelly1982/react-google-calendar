@@ -22,7 +22,7 @@ const Calendar = () => {
         }).then(calendars => {
             calendars.forEach((calendar, index) => {
                 dispatch({
-                    type: "SET_CALENDARS",
+                    type: "SET_CALENDAR",
                     payload: [{
                         id: index,
                         name: calendar.summary,
