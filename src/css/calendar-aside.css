@@ -1,5 +1,6 @@
 .google-calendar__aside {
     flex: none;
+    width: 15%;
 }
 .google-calendar__calendar-list {
     list-style: none;

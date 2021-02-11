@@ -22,4 +22,5 @@
 .google-calendar__table {
     border: solid 1px #EEE;
     flex: 1 1 auto;
+    margin-right: 2rem;
 }
