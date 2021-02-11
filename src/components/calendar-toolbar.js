@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { State } from '../store/store';
 
-const CalendarToolbar = ({ month }) => {
+const CalendarToolbar = () => {
+    const [state, dispatch] = useContext(State);
+    const { month } = state;
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { State } from '../store/store';
 import moment from 'moment';
 import CalendarRow from '../components/calendar-row';
 import CalendarDay from '../components/calendar-day';
 
-export const buildCalendarRows = ({ month, year, events }) => {
+export const buildCalendarRows = () => {
+    const [state, dispatch] = useContext(State);
+    const { month, year, calendars } = state;
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
@@ -28,13 +31,16 @@ export const buildCalendarRows = ({ month, year, events }) => {
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
                 let dayEvents = [];
-                if(events.length) {
-                    events.forEach(event => {
-                        if(moment(event.start.date).isSame(new Date(year, month, day))) {
-                            dayEvents.push(event);
-                        }
-                    });
-                }
+                calendars.forEach(calendar => {
+                    if(calendar.events.length) {
+                        calendar.events.forEach(event => {
+                            let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
+                            if(moment(startDate).isSame(new Date(year, month, day))) {
+                                dayEvents.push(event);
+                            }
+                        });
+                    }
+                });
 
                 calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} events={dayEvents} />);
 

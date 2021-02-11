@@ -1,11 +1,12 @@
 import React from 'react';
 import Calendar from './calendar';
 import '../css/calendar.css';
+import Store from '../store/store';
 
 const App = () => (
-    <div className="react-google-calendar">
+    <Store>
         <Calendar />
-    </div>
+    </Store>
 );
 
 export default App;
