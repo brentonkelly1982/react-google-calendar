@@ -10,3 +10,12 @@ body {
 h1, h2, h3, h4, p {
     margin: 0px;
 }
+.google-calendar--ally-hidden {
+    width: 0 !important;
+    height: 0 !important;
+    display: inline-block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+}

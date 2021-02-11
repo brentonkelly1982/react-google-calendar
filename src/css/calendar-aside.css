@@ -2,6 +2,11 @@
     flex: none;
     width: 15%;
 }
+.google-calendar__calendar-list-header {
+    margin-bottom: .75rem;
+    padding-bottom: .25rem;
+    border-bottom: solid 1px #EEE;
+}
 .google-calendar__calendar-list {
     list-style: none;
     padding: 0px;
@@ -10,10 +15,19 @@
 .google-calendar__calendar-list-item {
     display: flex;
     align-items: center;
+    margin: 5px 0px;
+}
+.google-calendar__calendar-toggle {
+    margin: 0px;
+    padding: 0px;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
 }
 .google-calendar__calendar-color-swatch {
     width: 15px;
     height: 15px;
     display: block;
     margin-right: 5px;
+    border-radius: 3px;
 }
