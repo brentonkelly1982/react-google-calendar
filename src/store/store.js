@@ -1,21 +1,28 @@
-import React, { createContext, useReducer } from 'react';
-import Calendars from '../reducers/reducers';
+import React, { createContext, useReducer, useMemo } from 'react';
+import { calendars, isLoading } from '../reducers/reducers';
 
 const month = (new Date()).getMonth();
 const year = (new Date()).getFullYear();
 
 const initialState = {
-    "loading": true,
+    "isLoading": true,
     "month": month,
     "year": year,
     "calendars": []
 };
 
-const Store = ({children}) => {
-    const [state, dispatch] = useReducer(Calendars, initialState);
+// https://stackoverflow.com/questions/55070044/i-have-built-a-global-state-redux-like-pattern-with-context-and-hooks-is-there
+const combineReducers = (...reducers) => (prevState, value, ...args) => reducers.reduce(
+    (newState, reducer) => reducer(newState, value, ...args),
+    prevState
+);
+const rootReducer = combineReducers(calendars, isLoading);
 
+const Store = ({children}) => {
+    const [state, dispatch] = useReducer(rootReducer, initialState);
+    const store = React.useMemo(() => [state, dispatch], [state]);
     return (
-        <State.Provider value={[state, dispatch]}>
+        <State.Provider value={store}>
             {children}
         </State.Provider>
     );

@@ -22,7 +22,7 @@ const Calendar = () => {
         }).then(calendars => {
             calendars.forEach((calendar, index) => {
                 dispatch({
-                    type: 'SET_CALENDARS',
+                    type: "SET_CALENDARS",
                     payload: [{
                         id: index,
                         name: calendar.summary,
@@ -30,6 +30,7 @@ const Calendar = () => {
                         events: calendar.items
                     }]
                 });
+                dispatch({ type: "REMOVE_LOADING" });
             });
         }).catch(error => {
             console.log(error);
