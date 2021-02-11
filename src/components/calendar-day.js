@@ -6,7 +6,7 @@ const CalendarDay = ({ blankDayCell, date, events }) => (
         {(blankDayCell != "true" && events.length) ?
             <ul className="google-calendar__events">
                 {events.map((event, index) => {
-                    return <li className="google-calendar__event" key={index}>{event.summary}</li>
+                    return <li className="google-calendar__event" key={index} style={{color: event.calendarColor}}>{event.summary}</li>
                 })}
             </ul>
             : ''

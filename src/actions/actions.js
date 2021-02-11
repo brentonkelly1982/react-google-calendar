@@ -45,7 +45,10 @@ export const buildCalendarRows = () => {
                             if(moment(startDate).isSame(new Date(year, month, day))) {
                                 
                                 // PUSH EVENT TO EVENT BANK
-                                dayEvents.push(event);
+                                dayEvents.push({
+                                    ...event,
+                                    calendarColor: calendar.color
+                                });
                             }
                         });
                     }

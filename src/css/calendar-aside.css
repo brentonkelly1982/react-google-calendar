@@ -7,3 +7,13 @@
     padding: 0px;
     margin: 0px;
 }
+.google-calendar__calendar-list-item {
+    display: flex;
+    align-items: center;
+}
+.google-calendar__calendar-color-swatch {
+    width: 15px;
+    height: 15px;
+    display: block;
+    margin-right: 5px;
+}
