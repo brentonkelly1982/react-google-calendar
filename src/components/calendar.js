@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { State } from '../store/store';
-import { setCalendar, removeLoading } from '../actions/actions2';
-import { getCalendarData } from '../thunks/thunks';
+import { setCalendar, removeLoading } from '../actions/actions';
 import CalendarToolbar from './calendar-toolbar';
 import CalendarContent from './calendar-content';
 import calendarConfig from '../../dist/config/config.json';
@@ -17,8 +16,10 @@ const Calendar = () => {
         const endTimeDate = (new Date(year, month + 1, 0)).setHours(11, 59, 59);
         const endTime = (new Date(endTimeDate)).toISOString();
 
+        let calendarIDs = [];
         let requests = calendarConfig.calendars.filter(calendar => {
             if(calendar.showInitially) {
+                calendarIDs.push(calendar.id);
                 return true;
             }
             return false;
@@ -29,12 +30,21 @@ const Calendar = () => {
                 return Promise.all(responses.map(response => response.json()));
             }).then(calendars => {
                 calendars.forEach((calendar, index) => {
+                    const calendarColor = calendarConfig.calendars.filter(calendar => {
+                        if(calendar.id == calendarIDs[index]) {
+                            return calendar.color;
+                        }
+                    })[0].color;
+
                     dispatch(setCalendar({
-                        id: index,
-                        active: true,
-                        name: calendar.summary,
-                        color: calendarConfig.calendars[index].color,
-                        events: calendar.items
+                        [calendarIDs[index]]: {
+                            active: true,
+                            name: calendar.summary,
+                            color: calendarColor,
+                            events: {
+                                [month + "/" + year]: calendar.items
+                            }
+                        }
                     }));
                     dispatch(removeLoading());
                 });

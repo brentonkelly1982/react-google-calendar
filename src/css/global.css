@@ -6,6 +6,8 @@ body {
     padding: 0px;
     font-family: 'Source Sans Pro', sans-serif;
     color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 h1, h2, h3, h4, p {
     margin: 0px;

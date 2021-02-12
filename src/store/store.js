@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useMemo } from 'react';
+import React, { createContext, useReducer, useMemo, useCallback } from 'react';
 import { calendars, isLoading } from '../reducers/reducers';
 
 const month = (new Date()).getMonth();
@@ -8,7 +8,7 @@ const initialState = {
     "isLoading": true,
     "month": month,
     "year": year,
-    "calendars": []
+    "calendars": {}
 };
 
 // https://stackoverflow.com/questions/55070044/i-have-built-a-global-state-redux-like-pattern-with-context-and-hooks-is-there
@@ -20,7 +20,15 @@ const rootReducer = combineReducers(calendars, isLoading);
 
 const Store = ({children}) => {
     const [state, dispatch] = useReducer(rootReducer, initialState);
-    const store = React.useMemo(() => [state, dispatch], [state]);
+    /*const thunkDispatch = useCallback(
+        (action) =>
+          typeof action === 'function'
+            ? action(dispatch)
+            : action,
+        []
+    );*/
+    const store = useMemo(() => [state, dispatch], [state]);
+    
     return (
         <State.Provider value={store}>
             {children}

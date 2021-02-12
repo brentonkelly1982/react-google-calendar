@@ -4,7 +4,7 @@ const CalendarDay = ({ blankDayCell, date, events }) => (
     <div className={(blankDayCell == "true") ? 'google-calendar__day google-calendar--empty-day' : 'google-calendar__day'}>
         {(blankDayCell == "true") ? '' : <span className="google-calendar__cell-date">{date}</span>}
         {(blankDayCell != "true" && events.length) ?
-            <ul className="google-calendar__events">
+            <ul className="google-calendar__events" tabIndex="0">
                 {events.map((event, index) => {
                     return <li className="google-calendar__event" key={index} style={{color: event.calendarColor}}>{event.summary}</li>
                 })}
