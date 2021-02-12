@@ -1,5 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { State } from '../store/store';
+import { setCalendar, removeLoading } from '../actions/actions2';
+import { getCalendarData } from '../thunks/thunks';
 import CalendarToolbar from './calendar-toolbar';
 import CalendarContent from './calendar-content';
 import calendarConfig from '../../dist/config/config.json';
@@ -15,26 +17,31 @@ const Calendar = () => {
         const endTimeDate = (new Date(year, month + 1, 0)).setHours(11, 59, 59);
         const endTime = (new Date(endTimeDate)).toISOString();
 
-        let requests = calendarConfig.calendars.map(calendar => fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendar.id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`));
+        let requests = calendarConfig.calendars.filter(calendar => {
+            if(calendar.showInitially) {
+                return true;
+            }
+            return false;
+        }).map(calendar => fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendar.id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`));
 
-        Promise.all(requests).then(responses => {
-            return Promise.all(responses.map(response => response.json()));
-        }).then(calendars => {
-            calendars.forEach((calendar, index) => {
-                dispatch({
-                    type: "SET_CALENDAR",
-                    payload: [{
+        if(requests) {
+            Promise.all(requests).then(responses => {
+                return Promise.all(responses.map(response => response.json()));
+            }).then(calendars => {
+                calendars.forEach((calendar, index) => {
+                    dispatch(setCalendar({
                         id: index,
+                        active: true,
                         name: calendar.summary,
                         color: calendarConfig.calendars[index].color,
                         events: calendar.items
-                    }]
+                    }));
+                    dispatch(removeLoading());
                 });
-                dispatch({ type: "REMOVE_LOADING" });
+            }).catch(error => {
+                console.log(error);
             });
-        }).catch(error => {
-            console.log(error);
-        });
+        }
     }, []);
 
     return (

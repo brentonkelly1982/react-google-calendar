@@ -4,7 +4,11 @@ import moment from 'moment';
 import CalendarRow from '../components/calendar-row';
 import CalendarDay from '../components/calendar-day';
 
-export const buildCalendarRows = () => {
+export const getCalendarData = () => async () => {
+
+}
+
+export const getCalendarRows = () => () => {
     const [state, dispatch] = useContext(State);
     const { month, year, calendars } = state;
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
