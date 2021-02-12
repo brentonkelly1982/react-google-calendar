@@ -20,13 +20,6 @@ const rootReducer = combineReducers(calendars, isLoading);
 
 const Store = ({children}) => {
     const [state, dispatch] = useReducer(rootReducer, initialState);
-    /*const thunkDispatch = useCallback(
-        (action) =>
-          typeof action === 'function'
-            ? action(dispatch)
-            : action,
-        []
-    );*/
     const store = useMemo(() => [state, dispatch], [state]);
     
     return (

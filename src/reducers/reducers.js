@@ -31,14 +31,6 @@ export const calendars = (state, action) => {
                     }
 
                 }
-                /*calendars: Object.entries(state.calendars).map(([id, calendar], index) => {
-                    if(id == payload) {
-                        return {
-                            ...calendar,
-                            active: (calendar.active) ? false : true
-                        }
-                    }
-                })*/
             }
         }
         default: {
