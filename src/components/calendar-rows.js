@@ -10,7 +10,7 @@ const CalendarRows = () => {
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
-    const monthLength = daysInMonth[month];
+    let monthLength = daysInMonth[month];
 
     // ADJUST FEBRUARY IF NEEDED
     if (month == 1) {
@@ -40,18 +40,20 @@ const CalendarRows = () => {
                     let calendar = calendars[cal];
 
                     // ONLY ITERATE IF EVENTS EXIST
-                    if(calendar.events[month + "/" + year].length && calendar.active) {
-                        calendar.events[month + "/" + year].forEach(event => {
-                            let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
-                            if(moment(startDate).isSame(new Date(year, month, day))) {
-                                
-                                // PUSH EVENT TO EVENT BANK
-                                dayEvents.push({
-                                    ...event,
-                                    calendarColor: calendar.color
-                                });
-                            }
-                        });
+                    if(calendar.active) {
+                        if(calendar.events[month + "/" + year].length) {
+                            calendar.events[month + "/" + year].forEach(event => {
+                                let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
+                                if(moment(startDate).isSame(new Date(year, month, day))) {
+                                    
+                                    // PUSH EVENT TO EVENT BANK
+                                    dayEvents.push({
+                                        ...event,
+                                        calendarColor: calendar.color
+                                    });
+                                }
+                            });
+                        }
                     }
                 };
 

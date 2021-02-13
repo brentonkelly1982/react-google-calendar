@@ -59,6 +59,7 @@ const Calendar = () => {
                         // ADD THIS CALENDAR DATA TO THE STORE
                         dispatch(setCalendar({
                             [calendarIDs[index]]: {
+                                id: calendarIDs[index],
                                 active: true,
                                 name: calendar.summary,
                                 color: calendarColor,

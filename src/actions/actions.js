@@ -16,6 +16,12 @@ export const setCalendarEvents = props => ({
     payload: props
 });
 
+export const CHANGE_CALENDAR_MONTH = "CHANGE_CALENDAR_MONTH";
+export const changeCalendarMonth = props => ({
+    type: "CHANGE_CALENDAR_MONTH",
+    payload: props
+});
+
 export const TOGGLE_CALENDAR = "TOGGLE_CALENDAR";
 export const toggleCalendar = props => ({
     type: "TOGGLE_CALENDAR",

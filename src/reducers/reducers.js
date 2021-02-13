@@ -1,4 +1,4 @@
-import { SET_CALENDAR, SET_CALENDARS_FROM_STORAGE, SET_CALENDAR_EVENTS, TOGGLE_CALENDAR, REMOVE_LOADING } from '../actions/actions';
+import { SET_CALENDAR, SET_CALENDARS_FROM_STORAGE, SET_CALENDAR_EVENTS, CHANGE_CALENDAR_MONTH, TOGGLE_CALENDAR, REMOVE_LOADING } from '../actions/actions';
 
 export const calendars = (state, action) => {
     const { type, payload } = action;
@@ -7,7 +7,7 @@ export const calendars = (state, action) => {
         case SET_CALENDAR: {
             return {
                 ...state,
-                calendars: {...state.calendars, ...payload}
+                calendars: { ...state.calendars, ...payload }
             }
         }
 
@@ -21,11 +21,21 @@ export const calendars = (state, action) => {
         case SET_CALENDAR_EVENTS: {
             return {
                 ...state,
-                calendars: Object.keys(state.calendars).map((key, index) => {
-                    if(payload.id == key) {
-                        return Object.assign(payload.events, ...Object.values(state.calendars[payload].events))
+                calendars: {
+                    ...state.calendars,
+                    [payload.id]: {
+                        ...state.calendars[payload.id],
+                        events: { ...state.calendars[payload.id].events, ...payload.events }
                     }
-                })
+                }
+            }
+        }
+
+        case CHANGE_CALENDAR_MONTH: {
+            return {
+                ...state,
+                month: payload.month,
+                year: payload.year
             }
         }
 
@@ -38,7 +48,6 @@ export const calendars = (state, action) => {
                         ...state.calendars[payload],
                         active: (state.calendars[payload].active) ? false : true
                     }
-
                 }
             }
         }

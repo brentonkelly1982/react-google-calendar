@@ -1,19 +1,26 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { State } from '../store/store';
-import { setCalendar, toggleCalendar } from '../actions/actions';
+import { setCalendar, toggleCalendar, setCalendarEvents } from '../actions/actions';
 import calendarConfig from '../../dist/config/config.json';
 
 const CalendarAside = () => {
     const [state, dispatch] = useContext(State);
+    const { month, year, calendars } = state;
+
+    // DEFINE TIME CONSTANTS
+    const startTimeDate = (new Date(year, month, 1)).setHours(0, 0, 0, 0);
+    const startTime = (new Date(startTimeDate)).toISOString();
+    const endTimeDate = (new Date(year, month + 1, 0)).setHours(11, 59, 59);
+    const endTime = (new Date(endTimeDate)).toISOString();
 
     // CHANGE CALENDAR METHOD
     const changeCalendar = (id) => {
         
         // THE TOGGLED CALENDAR EXISTS IN THE STORE
-        if(id in state.calendars) {
+        if(id in calendars) {
 
             // THE TOGGLED CALENDAR IS ACTIVE
-            if(state.calendars[id].active) {
+            if(calendars[id].active) {
 
                 // JUST TOGGLE THE ACTIVE STATE TO SHOW/HIDE
                 dispatch(toggleCalendar(id));
@@ -23,7 +30,7 @@ const CalendarAside = () => {
             else {
 
                 // THERE ARE SAVED EVENTS FOR THIS MONTH/YEAR IN THE STORE
-                if(state.month + "/" + state.year in state.calendars[id].events) {
+                if(month + "/" + year in calendars[id].events) {
                     
                     // JUST TOGGLE THE ACTIVE STATE TO SHOW/HIDE
                     dispatch(toggleCalendar(id));
@@ -33,19 +40,28 @@ const CalendarAside = () => {
                 else {
 
                     // WE NEED TO REQUEST EVENTS FOR THIS MONTH/YEAR
-                    console.log("need to fetch month data")
+                    fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`)
+                    .then(response => response.json()) // RETURN JSON
+                    .then((calendarData) => { // NOW DO WORK WITH THE DATA
+
+                        // ADD THIS CALENDAR DATA TO THE STORE
+                        dispatch(setCalendarEvents({
+                            id: id,
+                            events: { [month + "/" + year]: calendarData.items }
+                        }));
+
+                        // TOGGLE THE ACTIVE STATE TO SHOW/HIDE
+                        dispatch(toggleCalendar(id));
+                    })
+                    .catch(error => { // SIMPLE ERROR CATCH
+                        console.log(error);
+                    });
                 }
             }
         }
         
         // THE TOGGLED CALENDAR DOES NOT EXIST IN THE STORE YET SO WE NEED TO GET IT
         else {
-            // DEFINE TIME CONSTANTS
-            const startTimeDate = (new Date(state.year, state.month, 1)).setHours(0, 0, 0, 0);
-            const startTime = (new Date(startTimeDate)).toISOString();
-            const endTimeDate = (new Date(state.year, state.month + 1, 0)).setHours(11, 59, 59);
-            const endTime = (new Date(endTimeDate)).toISOString();
-
             // FETCH OUR CALENDAR DATA AND EVENTS FOR THIS MONTH/YEAR
             fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`)
                 .then(response => response.json()) // RETURN JSON
@@ -61,11 +77,12 @@ const CalendarAside = () => {
                     // ADD THIS CALENDAR DATA TO THE STORE
                     dispatch(setCalendar({
                         [id]: {
+                            id: id,
                             active: true,
                             name: calendarData.summary,
                             color: calendarColor,
                             events: {
-                                [state.month + "/" + state.year]: calendarData.items
+                                [month + "/" + year]: calendarData.items
                             }
                         }
                     }));
@@ -86,8 +103,8 @@ const CalendarAside = () => {
                     
                     // SET CHECKED STATE FOR THIS CALENDAR
                     let checkedState = false;
-                    if(calendar.id in state.calendars) {
-                        if(state.calendars[calendar.id].active) {
+                    if(calendar.id in calendars) {
+                        if(calendars[calendar.id].active) {
                             checkedState = true;
                         }
                     }
