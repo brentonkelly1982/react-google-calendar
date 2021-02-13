@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { State } from '../store/store';
 import { setCalendar, toggleCalendar } from '../actions/actions';
 import calendarConfig from '../../dist/config/config.json';

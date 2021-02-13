@@ -1,4 +1,4 @@
-import { SET_CALENDAR, SET_CALENDAR_EVENTS, TOGGLE_CALENDAR, REMOVE_LOADING } from '../actions/actions';
+import { SET_CALENDAR, SET_CALENDARS_FROM_STORAGE, SET_CALENDAR_EVENTS, TOGGLE_CALENDAR, REMOVE_LOADING } from '../actions/actions';
 
 export const calendars = (state, action) => {
     const { type, payload } = action;
@@ -10,6 +10,14 @@ export const calendars = (state, action) => {
                 calendars: {...state.calendars, ...payload}
             }
         }
+
+        case SET_CALENDARS_FROM_STORAGE: {
+            return {
+                ...state,
+                calendars: payload
+            }
+        }
+
         case SET_CALENDAR_EVENTS: {
             return {
                 ...state,
@@ -20,6 +28,7 @@ export const calendars = (state, action) => {
                 })
             }
         }
+
         case TOGGLE_CALENDAR: {
             return {
                 ...state,
@@ -33,6 +42,7 @@ export const calendars = (state, action) => {
                 }
             }
         }
+
         default: {
             return state;
         }
@@ -49,6 +59,7 @@ export const isLoading = (state, action) => {
                 isLoading: false
             }
         }
+
         default: {
             return state;
         }

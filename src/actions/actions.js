@@ -4,6 +4,12 @@ export const setCalendar = props => ({
     payload: props
 });
 
+export const SET_CALENDARS_FROM_STORAGE = "SET_CALENDARS_FROM_STORAGE";
+export const setCalendarsFromStorage = props => ({
+    type: "SET_CALENDARS_FROM_STORAGE",
+    payload: props
+});
+
 export const SET_CALENDAR_EVENTS = "SET_CALENDAR_EVENTS";
 export const setCalendarEvents = props => ({
     type: "SET_CALENDAR_EVENTS",
