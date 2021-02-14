@@ -10,7 +10,7 @@ const Calendar = () => {
 
     // GET AND SET OUR INITIAL DATA
     useEffect(() => {
-        if(localStorage.getItem("google-calendar-events")) {
+        if(sessionStorage.getItem("google-calendar-events")) {
             // SET CALENDARS FROM STORAGE
             dispatch(setCalendarsFromStorage(JSON.parse(localStorage.getItem("google-calendar-events"))))
 
@@ -83,7 +83,7 @@ const Calendar = () => {
     // SET LOCAL STORAGE
     useEffect(() => {
         if(Object.keys(state.calendars).length != 0) {
-            localStorage.setItem("google-calendar-events", JSON.stringify(state.calendars));
+            sessionStorage.setItem("google-calendar-events", JSON.stringify(state.calendars));
         }
     }, [state.calendars]);
 
