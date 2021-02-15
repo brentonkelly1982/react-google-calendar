@@ -4,13 +4,25 @@
             "name": "Holidays in United States",
             "id": "en.usa#holiday@group.v.calendar.google.com",
             "color": "#0F6CB9",
-            "showInitially": false
+            "showInitially": true
+        },
+        {
+            "name": "Holidays in Canada",
+            "id": "en.canadian#holiday@group.v.calendar.google.com",
+            "color": "#147B1B",
+            "showInitially": true
+        },
+        {
+            "name": "Holidays in Australia",
+            "id": "en.australian#holiday@group.v.calendar.google.com",
+            "color": "#A36700",
+            "showInitially": true
         },
         {
             "name": "Phases of the Moon",
             "id": "ht3jlfaac5lfd6263ulfh4tql8@group.calendar.google.com",
             "color": "#800000",
-            "showInitially": true
+            "showInitially": false
         },
         {
             "name": "Brenton's Calendar",

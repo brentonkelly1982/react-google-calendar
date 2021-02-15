@@ -12,7 +12,7 @@ const Calendar = () => {
     useEffect(() => {
         if(sessionStorage.getItem("google-calendar-events")) {
             // SET CALENDARS FROM STORAGE
-            dispatch(setCalendarsFromStorage(JSON.parse(localStorage.getItem("google-calendar-events"))))
+            dispatch(setCalendarsFromStorage(JSON.parse(sessionStorage.getItem("google-calendar-events"))))
 
             // REMOVE THE LOADING STATE
             dispatch(removeLoading());

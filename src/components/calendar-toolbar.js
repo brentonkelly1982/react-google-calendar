@@ -110,7 +110,7 @@ const CalendarToolbar = () => {
         <div className="google-calendar__toolbar">
             <h2>{months[month] + " " + year}</h2>
             <div className="google-calendar__navigation-controls">
-                <a href="#" role="butotn" className="google-calendar__navigation-control google-calendar--today" onClick={() => { loadThisMonth() }}>Today</a>
+                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--today" onClick={() => { loadThisMonth() }}>Today</a>
                 <a href="#" role="button" className="google-calendar__navigation-control google-calendar--back" onClick={() => { loadPreviousMonth() }}>Back</a>
                 <a href="#" role="button" className="google-calendar__navigation-control google-calendar--next" onClick={() => { loadNextMonth() }}>Next</a>
             </div>

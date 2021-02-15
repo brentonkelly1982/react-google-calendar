@@ -94,7 +94,7 @@ const CalendarAside = () => {
     }
 
     return (
-        <aside className="google-calendar__aside">
+        <div className="google-calendar__aside">
             <h3 className="google-calendar__calendar-list-header">Calendars</h3>
             <ul className="google-calendar__calendar-list">
                 
@@ -117,7 +117,7 @@ const CalendarAside = () => {
                             </li>
                 })}
             </ul>
-        </aside>
+        </div>
     );
 };
 
