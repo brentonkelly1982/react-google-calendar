@@ -7,6 +7,7 @@ import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
     const [state, dispatch] = useContext(State);
+    const { month, year, calendars } = state;
 
     // GET AND SET OUR INITIAL DATA
     useEffect(() => {
@@ -82,10 +83,10 @@ const Calendar = () => {
 
     // SET LOCAL STORAGE
     useEffect(() => {
-        if(Object.keys(state.calendars).length != 0) {
-            sessionStorage.setItem("google-calendar-events", JSON.stringify(state.calendars));
+        if(Object.keys(calendars).length != 0) {
+            sessionStorage.setItem('google-calendar-events', JSON.stringify(calendars));
         }
-    }, [state.calendars]);
+    }, [calendars]);
 
     return (
         <div className="react-google-calendar">

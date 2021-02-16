@@ -4,7 +4,7 @@
             "name": "Holidays in United States",
             "id": "en.usa#holiday@group.v.calendar.google.com",
             "color": "#0F6CB9",
-            "showInitially": true
+            "showInitially": false
         },
         {
             "name": "Holidays in Canada",

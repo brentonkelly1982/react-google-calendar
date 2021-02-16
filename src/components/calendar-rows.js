@@ -7,17 +7,12 @@ import CalendarDay from '../components/calendar-day';
 const CalendarRows = () => {
     const [state, dispatch] = useContext(State);
     const { month, year, calendars } = state;
+
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
-    let monthLength = daysInMonth[month];
-
-    // ADJUST FEBRUARY IF NEEDED
-    if (month == 1) {
-        if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
-            monthLength = 29;
-        }
-    }
+    const monthLength = (new Date(year, month + 1, 0)).getDate();
 
     let calendarRows = [];
     let calendarDays = [];
@@ -41,24 +36,26 @@ const CalendarRows = () => {
 
                     // ONLY ITERATE IF EVENTS EXIST
                     if(calendar.active) {
-                        if(calendar.events[month + "/" + year].length) {
-                            calendar.events[month + "/" + year].forEach(event => {
-                                let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
-                                if(moment(startDate).isSame(new Date(year, month, day))) {
-                                    
-                                    // PUSH EVENT TO EVENT BANK
-                                    dayEvents.push({
-                                        ...event,
-                                        calendarColor: calendar.color
-                                    });
-                                }
-                            });
+                        if(month + "/" + year in calendar.events) {
+                            if(calendar.events[month + "/" + year].length) {
+                                calendar.events[month + "/" + year].forEach(event => {
+                                    let startDate = ('date' in event.start) ? event.start.date : (event.start.dateTime.split("T"))[0];
+                                    if(moment(startDate).isSame(new Date(year, month, day))) {
+                                        
+                                        // PUSH EVENT TO EVENT BANK
+                                        dayEvents.push({
+                                            ...event,
+                                            calendarColor: calendar.color
+                                        });
+                                    }
+                                });
+                            }
                         }
                     }
                 };
 
                 // CREATE AND PUSH CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} key={d} events={dayEvents} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} day={days[d]} key={d} events={dayEvents} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -67,7 +64,7 @@ const CalendarRows = () => {
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
                 // CREATE AND PUSH EMPTY CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} key={d} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} day={days[d]} key={d} />);
             }
 
             keyCounter++;

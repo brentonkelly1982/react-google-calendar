@@ -8,18 +8,22 @@ const CalendarToolbar = () => {
     const { month, year } = state;
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    const loadThisMonth = () => {
+    const loadThisMonth = (e) => {
+        e.preventDefault();
+
         changeCalendar({ month: (new Date()).getMonth(), year: (new Date()).getFullYear() });
     }
     
-    const loadPreviousMonth = () => {
+    const loadPreviousMonth = (e) => {
+        e.preventDefault();
         const previousMonth = (state.month - 1 < 0) ? 11 : state.month - 1;
         const previousYear = (previousMonth == 11) ? state.year - 1 : state.year;
 
         changeCalendar({ month: previousMonth, year: previousYear });
     }
 
-    const loadNextMonth = () => {
+    const loadNextMonth = (e) => {
+        e.preventDefault();
         const nextMonth = (state.month + 1 > 11) ? 0 : state.month + 1;
         const nextYear = (nextMonth == 0) ? state.year + 1 : state.year;
 
@@ -108,11 +112,11 @@ const CalendarToolbar = () => {
 
     return (
         <div className="google-calendar__toolbar">
-            <h2>{months[month] + " " + year}</h2>
+            <h2 className="google-calendar__calendar-month-header">{months[month] + " " + year}</h2>
             <div className="google-calendar__navigation-controls">
-                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--today" onClick={() => { loadThisMonth() }}>Today</a>
-                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--back" onClick={() => { loadPreviousMonth() }}>Back</a>
-                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--next" onClick={() => { loadNextMonth() }}>Next</a>
+                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--today" onClick={(e) => { loadThisMonth(e) }}>Today</a>
+                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--back" onClick={(e) => { loadPreviousMonth(e) }}>Back</a>
+                <a href="#" role="button" className="google-calendar__navigation-control google-calendar--next" onClick={(e) => { loadNextMonth(e) }}>Next</a>
             </div>
         </div>
     );

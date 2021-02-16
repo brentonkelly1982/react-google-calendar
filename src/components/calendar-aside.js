@@ -111,7 +111,7 @@ const CalendarAside = () => {
 
                     return  <li className="google-calendar__calendar-list-item" key={index}>
                                 <label className="google-calendar__calendar-toggle-label google-calendar--ally-hidden" htmlFor={"google-calendar__calendar-item-" + index}>Toggle {calendar.name} calendar</label>
-                                <input type="checkbox" className="google-calendar__calendar-toggle" id={"google-calendar__calendar-item-" + index} checked={checkedState} onChange={() => { changeCalendar(calendar.id)}}  />
+                                <input type="checkbox" className="google-calendar__calendar-toggle" id={"google-calendar__calendar-item-" + index} checked={checkedState} onChange={() => { changeCalendar(calendar.id)}} data-calendar-id={calendar.id}  />
                                 <span className="google-calendar__calendar-color-swatch" style={{backgroundColor: calendar.color}}></span>
                                 <span className="google-calendar__calendar-name">{calendar.name}</span>
                             </li>
