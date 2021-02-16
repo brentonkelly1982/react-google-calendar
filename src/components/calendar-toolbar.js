@@ -59,7 +59,7 @@ const CalendarToolbar = () => {
                 return false;
 
             // NOW BUILD OUR FETCH REQUESTS
-            }).map(calendar => fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendar.id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`));
+            }).map(calendar => fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendar.id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=${calendarConfig.apiKey}`));
 
             // EXECUTE OUR REQUESTS
             Promise.all(requests).then(responses => {

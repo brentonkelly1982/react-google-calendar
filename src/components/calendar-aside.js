@@ -40,7 +40,7 @@ const CalendarAside = () => {
                 else {
 
                     // WE NEED TO REQUEST EVENTS FOR THIS MONTH/YEAR
-                    fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`)
+                    fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=${calendarConfig.apiKey}`)
                     .then(response => response.json()) // RETURN JSON
                     .then((calendarData) => { // NOW DO WORK WITH THE DATA
 
@@ -63,7 +63,7 @@ const CalendarAside = () => {
         // THE TOGGLED CALENDAR DOES NOT EXIST IN THE STORE YET SO WE NEED TO GET IT
         else {
             // FETCH OUR CALENDAR DATA AND EVENTS FOR THIS MONTH/YEAR
-            fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=AIzaSyAEqKrKq0z4Hh9jmYxjkG0nE9089M9Q95k`)
+            fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(id)}/events?orderBy=startTime&singleEvents=true&timeMin=${startTime}&timeMax=${endTime}&key=${calendarConfig.apiKey}`)
                 .then(response => response.json()) // RETURN JSON
                 .then((calendarData) => { // NOW DO WORK WITH THE DATA
 
