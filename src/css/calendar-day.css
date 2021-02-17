@@ -48,3 +48,6 @@
     font-size: .95rem;
     margin-bottom: .35rem;
 }
+.google-calendar__event-title-link {
+    color: inherit;
+}
