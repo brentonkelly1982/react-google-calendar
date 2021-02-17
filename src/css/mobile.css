@@ -1,0 +1,78 @@
+/* 768+ */
+@media (max-width: 1023px) {
+    .google-calendar__content {
+        flex-direction: column;
+    }
+    .google-calendar__table {
+        width: 100%;
+        flex: none;
+        order: 1;
+    }
+    .google-calendar__aside {
+        width: 100%;
+        flex: none;
+        order: 0;
+        margin-bottom: 1rem;
+    }
+}
+/* 640+ */
+@media (max-width: 767px) {
+    .google-calendar__headers,
+    .google-calendar__day.google-calendar--empty-day {
+        display: none;
+    }
+    .google-calendar__table {
+        border-bottom: 0px;
+    }
+    .google-calendar__row {
+        display: block;
+    }
+    .google-calendar__day {
+        width: 100%;
+        height: auto;
+        border-right: 0px;
+        border-bottom: solid 1px #EEE;
+        min-height: 70px;
+    }
+    .google-calendar__day:before {
+        content: attr(data-day) ', ' attr(data-month) ' ' attr(data-date);
+        display: block;
+        padding: 10px 10px 0px;
+        font-weight: 600;
+    }
+    .google-calendar__day:last-child {
+        border-bottom: 0px;
+    }
+    .google-calendar__cell-date {
+        display: none;
+    }
+    .google-calendar__events {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+}
+
+/* 320+ */
+@media (max-width: 479px) {
+    .google-calendar__toolbar {
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+    }
+    .google-calendar__calendar-month-header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .google-calendar__navigation-controls {
+        width: 100%;
+    }
+    .google-calendar__navigation-control {
+        flex: 1 1 auto;
+    }
+}

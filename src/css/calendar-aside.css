@@ -14,8 +14,8 @@
 }
 .google-calendar__calendar-list-item {
     display: flex;
-    align-items: center;
-    margin: 5px 0px;
+    align-items: flex-start;
+    margin: 10px 0px;
 }
 .google-calendar__calendar-toggle {
     margin: 0px;
@@ -23,6 +23,7 @@
     width: 15px;
     height: 15px;
     margin-right: 5px;
+    flex: none
 }
 .google-calendar__calendar-color-swatch {
     width: 15px;
@@ -30,4 +31,8 @@
     display: block;
     margin-right: 5px;
     border-radius: 3px;
+    flex: none;
+}
+.google-calendar__calendar-name {
+    line-height: 1;
 }

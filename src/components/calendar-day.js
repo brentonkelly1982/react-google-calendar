@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CalendarDay = ({ blankDayCell, date, day, events }) => (
-    <div className={(blankDayCell == "true") ? 'google-calendar__day google-calendar--empty-day' : 'google-calendar__day'} data-date={(blankDayCell != "true") ? date : ''} data-day={day}>
+const CalendarDay = ({ blankDayCell, date, day, month, events }) => (
+    <div className={(blankDayCell == "true") ? 'google-calendar__day google-calendar--empty-day' : 'google-calendar__day'} data-date={(blankDayCell != "true") ? date : ''} data-day={day} data-month={month}>
         {(blankDayCell == "true") ? '' : <span className="google-calendar__cell-date">{date}</span>}
         {(blankDayCell != "true" && events.length) ?
             <ul className="google-calendar__events" tabIndex="0">

@@ -8,16 +8,30 @@
 }
 .google-calendar__navigation-controls {
     display: flex;
-    align-items: center;
 }
 .google-calendar__navigation-control {
     text-decoration: none;
-    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background: #0F6CB9;
+    padding: 4px 6px;
+    color: #FFF;
+    line-height: 1;
+    font-weight: 600;
 }
 .google-calendar__navigation-control.google-calendar--back,
 .google-calendar__navigation-control.google-calendar--next {
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+    font-size: .9rem;
 }
 .google-calendar__navigation-control.google-calendar--back:before {
     transform: rotate(180deg);
+    position: relative;
+    left: -1px;
+}
+.google-calendar__navigation-control.google-calendar--next:before {
+    position: relative;
+    right: -1px;
 }

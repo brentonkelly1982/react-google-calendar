@@ -9,7 +9,7 @@ const CalendarRows = () => {
     const { month, year, calendars } = state;
 
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
     const monthLength = (new Date(year, month + 1, 0)).getDate();
@@ -55,7 +55,7 @@ const CalendarRows = () => {
                 };
 
                 // CREATE AND PUSH CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} day={days[d]} key={d} events={dayEvents} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} month={months[month]} day={days[d]} key={d} events={dayEvents} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -64,7 +64,7 @@ const CalendarRows = () => {
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
                 // CREATE AND PUSH EMPTY CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} day={days[d]} key={d} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} month={months[month]} day={days[d]} key={d} />);
             }
 
             keyCounter++;

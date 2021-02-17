@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, componentDidUpdate } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { State } from '../store/store';
 import { setCalendar, setCalendarsFromStorage, removeLoading } from '../actions/actions';
 import CalendarToolbar from './calendar-toolbar';
