@@ -1,13 +1,14 @@
 .google-calendar__toolbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: solid 2px #EEE;
     margin-bottom: 1.25rem;
     padding-bottom: .5rem
 }
 .google-calendar__navigation-controls {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 .google-calendar__navigation-control {
     text-decoration: none;
@@ -16,4 +17,7 @@
 .google-calendar__navigation-control.google-calendar--back,
 .google-calendar__navigation-control.google-calendar--next {
     margin-left: 1.5rem;
+}
+.google-calendar__navigation-control.google-calendar--back:before {
+    transform: rotate(180deg);
 }
