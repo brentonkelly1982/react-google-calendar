@@ -7,7 +7,7 @@ import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
     const [state, dispatch] = useContext(State);
-    const { month, year, calendars } = state;
+    const { calendars } = state;
 
     // GET AND SET OUR INITIAL DATA
     useEffect(() => {
