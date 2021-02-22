@@ -13,6 +13,7 @@ const CalendarRows = () => {
     const firstDay = new Date(year, month, 1);
     const startDay = firstDay.getDay();
     const monthLength = (new Date(year, month + 1, 0)).getDate();
+    const todayDate = moment(new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate()));
 
     let calendarRows = [];
     let calendarDays = [];
@@ -25,6 +26,9 @@ const CalendarRows = () => {
 
         // LOOP FOR EACH DAY CELL IN THIS ROW
         for (var d = 0; d <= 6; d++) {
+
+            let thisDate = moment(new Date(year, month, day));
+            let isToday = thisDate.isSame(todayDate);
 
             // IF DAY CELL HAS A DATE
             if (day <= monthLength && (w > 0 || d >= startDay)) {
@@ -55,7 +59,7 @@ const CalendarRows = () => {
                 };
 
                 // CREATE AND PUSH CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} month={months[month]} day={days[d]} key={d} events={dayEvents} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} month={months[month]} day={days[d]} key={d} events={dayEvents} isToday={isToday} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -64,7 +68,7 @@ const CalendarRows = () => {
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
                 // CREATE AND PUSH EMPTY CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} month={months[month]} day={days[d]} key={d} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} month={months[month]} day={days[d]} key={d} isToday={false} />);
             }
 
             keyCounter++;
