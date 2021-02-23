@@ -42,6 +42,17 @@
     height: 15px;
     background: #FFF;
 }
+@media (min-width: 768px) {
+    .google-calendar__cell-date span {
+        width: 0 !important;
+        height: 0 !important;
+        display: inline-block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+        overflow: hidden !important;
+    }
+}
 .google-calendar__events {
     list-style: none;
     padding: 0px;

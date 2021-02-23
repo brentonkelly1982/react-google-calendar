@@ -34,17 +34,20 @@
         border-bottom: solid 1px #EEE;
         min-height: 70px;
     }
-    .google-calendar__day:before {
-        content: attr(data-day) ', ' attr(data-month) ' ' attr(data-date);
-        display: block;
-        padding: 10px 10px 0px;
-        font-weight: 600;
-    }
     .google-calendar__day:last-child {
         border-bottom: 0px;
     }
     .google-calendar__cell-date {
-        display: none;
+        padding: 10px 10px 0px;
+        font-weight: 600;
+        position: relative;
+        top: auto;
+        right: auto;
+        font-size: 1rem;
+        display: block;
+        width: auto;
+        height: auto;
+        background: transparent;
     }
     .google-calendar__events {
         position: relative;

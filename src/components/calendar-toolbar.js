@@ -114,9 +114,9 @@ const CalendarToolbar = () => {
         <div className="google-calendar__toolbar">
             <h2 className="google-calendar__calendar-month-header">{months[month] + " " + year}</h2>
             <div className="google-calendar__navigation-controls">
-                <a href="#" role="button" aria-label="Load current month" className="google-calendar__navigation-control google-calendar--today" onClick={(e) => { loadThisMonth(e) }}>This Month</a>
-                <a href="#" role="button" aria-label="Load previous month" className="google-calendar__navigation-control google-calendar--back google-calendar--icon google-calendar--arrow" onClick={(e) => { loadPreviousMonth(e) }}></a>
-                <a href="#" role="button" aria-label="Load next month" className="google-calendar__navigation-control google-calendar--next google-calendar--icon google-calendar--arrow" onClick={(e) => { loadNextMonth(e) }}></a>
+                <button aria-label="Load current month" className="google-calendar__navigation-control google-calendar--today" onClick={(e) => { loadThisMonth(e) }}>This Month</button>
+                <button aria-label="Load previous month" className="google-calendar__navigation-control google-calendar--back google-calendar--icon google-calendar--arrow" onClick={(e) => { loadPreviousMonth(e) }}></button>
+                <button aria-label="Load next month" className="google-calendar__navigation-control google-calendar--next google-calendar--icon google-calendar--arrow" onClick={(e) => { loadNextMonth(e) }}></button>
             </div>
         </div>
     );

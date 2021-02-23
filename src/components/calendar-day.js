@@ -11,7 +11,7 @@ const convertTime = time => {
 
 const CalendarDay = ({ blankDayCell, date, day, month, events, isToday }) => (
     <div className={((blankDayCell == "true") ? 'google-calendar__day google-calendar--empty-day' : 'google-calendar__day') + ((isToday) ? ' google-calendar--is-today' : '')} data-date={(blankDayCell != "true") ? date : ''} data-day={day} data-month={month}>
-        {(blankDayCell == "true") ? '' : <span className="google-calendar__cell-date">{date}</span>}
+        {(blankDayCell == "true") ? '' : <span className="google-calendar__cell-date"><span>{day + ', ' + month} </span>{date}</span>}
         {(blankDayCell != "true" && events.length) ?
             <ul className="google-calendar__events" tabIndex="0">
                 {events.map((event, index) => {

@@ -20,6 +20,8 @@
     color: #FFF;
     line-height: 1;
     font-weight: 600;
+    border: none;
+    outline: none;
 }
 .google-calendar__navigation-control.google-calendar--back,
 .google-calendar__navigation-control.google-calendar--next {

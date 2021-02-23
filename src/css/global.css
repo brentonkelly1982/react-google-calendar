@@ -24,3 +24,8 @@ h1, h2, h3, h4, p {
     border: 0 !important;
     overflow: hidden !important;
 }
+:focus {
+    animation: none !important;
+    outline: none !important;
+	box-shadow: 0 0 0 1px #000, 0 0 0 2px #FFF, 0 0 0 3px #FFF, 0 0 0 4px #000 !important;
+}
