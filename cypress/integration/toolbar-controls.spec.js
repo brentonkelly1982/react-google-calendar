@@ -2,7 +2,7 @@
 
 describe('Calendar back control', () => {
     before(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('http://localhost:8000');
     });
 
     it('Check that clicking the back button changes the calendar correctly to the previous month', () => {
@@ -70,7 +70,7 @@ describe('Calendar back control', () => {
 
 describe('Calendar next control', () => {
     before(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('http://localhost:8000');
     });
 
     it('Check that clicking the next button changes the calendar correctly to the next month', () => {
@@ -138,7 +138,7 @@ describe('Calendar next control', () => {
 
 describe('Calendar today control', () => {
     before(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('http://localhost:8000');
     });
 
     it('Check that clicking the today button changes the calendar correctly to the current month', () => {

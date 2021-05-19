@@ -2,7 +2,7 @@
 
 describe('Initial calendar states and values', () => {
     before(() => {
-        cy.visit('http://localhost:3000');
+        cy.visit('http://localhost:8000');
         sessionStorage.clear();
         console.log(sessionStorage.getItem('google-calendar-events'))
     });
