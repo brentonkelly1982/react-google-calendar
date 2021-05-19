@@ -6,7 +6,7 @@ import CalendarContent from './calendar-content';
 import calendarConfig from '../../dist/config/config.json';
 
 const Calendar = () => {
-    const [state, dispatch] = useContext(State);
+    const [ state, dispatch ] = useContext(State);
     const { calendars } = state;
 
     // GET AND SET OUR INITIAL DATA

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
+
+import CalendarDay from '../components/calendar-day';
+import CalendarRow from '../components/calendar-row';
 import { State } from '../store/store';
 import moment from 'moment';
-import CalendarRow from '../components/calendar-row';
-import CalendarDay from '../components/calendar-day';
 
 const CalendarRows = () => {
-    const [state, dispatch] = useContext(State);
+    const [ state, dispatch ] = useContext(State);
     const { month, year, calendars } = state;
 
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -35,8 +36,7 @@ const CalendarRows = () => {
                 let dayEvents = [];
 
                 // LOOP THROUGH EACH CALENDAR
-                for(const cal in calendars) {
-                    let calendar = calendars[cal];
+                for(const [calendarKey, calendar] of Object.entries(calendars)) {
 
                     // ONLY ITERATE IF EVENTS EXIST
                     if(calendar.active) {
