@@ -59,7 +59,7 @@ const CalendarRows = () => {
                 };
 
                 // CREATE AND PUSH CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="false" date={day} month={months[month]} day={days[d]} key={d} events={dayEvents} isToday={isToday} />);
+                calendarDays.push(<CalendarDay blankDayCell="false" date={day} month={months[month]} day={days[d]} year={year} key={d} events={dayEvents} isToday={isToday} />);
 
                 // INCREMENT OUR DAY COUNTER
                 day++;
@@ -68,7 +68,7 @@ const CalendarRows = () => {
             // IF THIS DAY CELL DOESN'T HAVE A DATE
             else {
                 // CREATE AND PUSH EMPTY CALENDAR DAY TO BANK
-                calendarDays.push(<CalendarDay blankDayCell="true" date={null} month={months[month]} day={days[d]} key={d} isToday={false} />);
+                calendarDays.push(<CalendarDay blankDayCell="true" date={null} month={months[month]} day={days[d]} year={year} key={d} isToday={false} />);
             }
 
             keyCounter++;
