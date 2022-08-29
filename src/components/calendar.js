@@ -69,12 +69,14 @@ const Calendar = () => {
                                 }
                             }
                         }));
-
-                        // REMOVE THE LOADING STATE
-                        dispatch(removeLoading());
                     });
+
+                    // REMOVE THE LOADING STATE
+                    dispatch(removeLoading());
                 })
-                .catch(error => { // SIMPLE ERROR CATCH
+                .catch(error => {
+                    // SIMPLE ERROR CATCH
+                    // IDEALLY, WE'D HAVE A USEFUL ERROR MESSAGE DISPLAY TO THE USER
                     console.log(error);
                 });
             }
