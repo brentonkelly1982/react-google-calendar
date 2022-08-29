@@ -4,8 +4,7 @@
   "description": "Google calendar application that can display multiple public calendars in a single view.",
   "main": "index.js",
   "scripts": {
-    "serve": "npx webpack serve",
-    "watch": "npx webpack --watch",
+    "dev": "npx webpack serve",
     "test": "npx cypress open",
     "build": "npx webpack build"
   },

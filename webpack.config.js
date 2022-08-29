@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
     entry: './src/index.js',
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -28,6 +28,6 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: 8000,
-        hotOnly: true,
-    }
+        writeToDisk: true
+    },
 };
