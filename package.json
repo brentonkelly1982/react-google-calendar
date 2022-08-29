@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "npx webpack serve",
     "watch": "npx webpack --watch",
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "build": "npx webpack build"
   },
   "repository": {
     "type": "git",
